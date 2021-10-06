@@ -1,13 +1,13 @@
-DROP TABLE IF EXISTS billionaires;
+DROP TABLE IF EXISTS testtable;
 
-CREATE TABLE billionaires (
+CREATE TABLE testtable (
                               id INT AUTO_INCREMENT  PRIMARY KEY,
-                              first_name VARCHAR(250) NOT NULL,
-                              last_name VARCHAR(250) NOT NULL,
-                              career VARCHAR(250) DEFAULT NULL
+                              textcolumn VARCHAR(250) NOT NULL,
+                              numcolumn INT NOT NULL,
+                              boolcolumn BOOL DEFAULT NULL
 );
 
-INSERT INTO billionaires (first_name, last_name, career) VALUES
-                                                             ('Aliko', 'Dangote', 'Billionaire Industrialist'),
-                                                             ('Bill', 'Gates', 'Billionaire Tech Entrepreneur'),
-                                                             ('Folrunsho', 'Alakija', 'Billionaire Oil Magnate');
+INSERT INTO testtable (textcolumn, numcolumn, boolcolumn) VALUES
+                                                             ('test1', 25, TRUE),
+                                                             ('test2', 0, FALSE),
+                                                             ('test3', -324, FALSE);
