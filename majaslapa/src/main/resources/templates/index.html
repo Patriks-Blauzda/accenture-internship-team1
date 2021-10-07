@@ -5,15 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p>Get your greeting <a href="/greeting"+type>here</a></p>
+<h1 style="text-align:center;">Sveicināts mājaslapā!</h1>
 
-<form action="/greeting">
-<textarea name="name" cols="10" rows="2" placeholder="Vārds"></textarea>
-    </br>
-<input type="submit">
+<form action="majaslapa\db" method="get">
+    <label for="dati">Ievadiet datus:</label><br>
+    <input type="text" id="dati" name="dati"><br>
+    <input type="submit" value="Saglabāt">
 </form>
 
-<a href="/h2-console">Datubaze</a>
-
+<form action="" method="post">
+    <input type="submit" value="Iegūt datus">
+</form>
 </body>
+
 </html>
