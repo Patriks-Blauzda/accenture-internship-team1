@@ -17,19 +17,23 @@ public class    MajaslapaApplication {
         update_properties();
         SpringApplication.run(MajaslapaApplication.class, args);
 
+        System.out.println("Kad pirmo reizi programma palaista, atjaunojas datu avots, programmu jarestarte");
     }
 
-    
-    
-    
+
+
+
     // Nosaka datubazes faila saglabasanas punktu (Majaslapa\db)
     public static void update_properties() {
         Path prop_path = Path.of(System.getProperty("user.dir")+"\\src\\main\\resources\\application.properties");
 
         String old_dest = read_file(prop_path);
-        old_dest = old_dest.substring(35);
+        old_dest = old_dest.substring(22);
+        if(old_dest.length() == 0) {
+            old_dest = null;
+        }
 
-        String new_dest = System.getProperty("user.dir") + "\\db\\demo";
+        String new_dest = "jdbc:h2:file:" + System.getProperty("user.dir") + "\\db\\demo";
         new_dest = new_dest.replace('\\', '/');
 
         update_file(prop_path, new_dest, old_dest);
@@ -42,7 +46,7 @@ public class    MajaslapaApplication {
         String outputtext = null;
 
         try(InputStream in = Files.newInputStream(file);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
 
             String line = null;
             while ((line = reader.readLine()) != null) {
@@ -70,7 +74,11 @@ public class    MajaslapaApplication {
             reader.close();
             String inputStr = inputBuffer.toString();
 
-            inputStr = inputStr.replace(oldtext, newtext);
+            if(oldtext == null){
+                inputStr = inputStr.replace("spring.datasource.url=", "spring.datasource.url=" + newtext);
+            } else {
+                inputStr = inputStr.replace(oldtext, newtext);
+            }
 
             FileOutputStream fileOut = new FileOutputStream(file.toString());
             fileOut.write(inputStr.getBytes());
