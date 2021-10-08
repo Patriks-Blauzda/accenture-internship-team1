@@ -15,9 +15,9 @@ public class    MajaslapaApplication {
 
     public static void main(String[] args) {
         update_properties();
-        SpringApplication.run(MajaslapaApplication.class, args);
 
-        System.out.println("Kad pirmo reizi programma palaista, atjaunojas datu avots, programmu jarestarte");
+        SpringApplication.run(MajaslapaApplication.class, args);
+        // Programmu jarestarte kad pirmo reizi sak, lai atjaunotu datubazes failu novietojumu
     }
 
 
@@ -29,9 +29,6 @@ public class    MajaslapaApplication {
 
         String old_dest = read_file(prop_path);
         old_dest = old_dest.substring(22);
-        if(old_dest.length() == 0) {
-            old_dest = null;
-        }
 
         String new_dest = "jdbc:h2:file:" + System.getProperty("user.dir") + "\\db\\demo";
         new_dest = new_dest.replace('\\', '/');
@@ -43,14 +40,16 @@ public class    MajaslapaApplication {
 
     // Sanem pedejo rindu no noteikta faila
     public static String read_file(Path file){
-        String outputtext = null;
+        String outputtext = "";
 
         try(InputStream in = Files.newInputStream(file);
             BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
 
             String line = null;
             while ((line = reader.readLine()) != null) {
-                outputtext = line;
+                if (line.contains("spring.datasource.url=")) {
+                    outputtext = line;
+                }
             }
 
         } catch (IOException x) {
@@ -74,7 +73,7 @@ public class    MajaslapaApplication {
             reader.close();
             String inputStr = inputBuffer.toString();
 
-            if(oldtext == null){
+            if(oldtext == ""){
                 inputStr = inputStr.replace("spring.datasource.url=", "spring.datasource.url=" + newtext);
             } else {
                 inputStr = inputStr.replace(oldtext, newtext);
