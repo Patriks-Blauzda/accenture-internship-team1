@@ -1,13 +1,6 @@
-DROP TABLE IF EXISTS testtable;
+DROP TABLE IF EXISTS Dati;
 
-CREATE TABLE testtable (
-                              id INT AUTO_INCREMENT  PRIMARY KEY,
-                              textcolumn VARCHAR(250) NOT NULL,
-                              numcolumn INT NOT NULL,
-                              boolcolumn BOOL DEFAULT NULL
+CREATE TABLE Dati (
+                              Nr INT AUTO_INCREMENT  PRIMARY KEY,
+                              Ievaditie_dati VARCHAR(250)
 );
-
-INSERT INTO testtable (textcolumn, numcolumn, boolcolumn) VALUES
-                                                             ('test1', 25, TRUE),
-                                                             ('test2', 0, FALSE),
-                                                             ('test3', -324, FALSE);
