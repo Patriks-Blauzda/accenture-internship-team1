@@ -5,7 +5,7 @@
 <body>
 <form action="/data" method="post">
     <pre>
-  Ievade:   <input name="ievade"/> <br/>
+  Ievade:   <input name="ievades"/> <br/>
     <input type="submit" value="Save">
         </pre>
 </form>
@@ -16,7 +16,7 @@
     </tr>
     <tr th:each="data : ${ievades}">
         <td th:text="${data.nr}"></td>
-        <td th:text="${data.ievitie_dati}"></td>
+        <td th:text="${data.ievaditie_dati}"></td>
     </tr>
 </table>
 </body>
