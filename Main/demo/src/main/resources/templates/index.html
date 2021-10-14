@@ -11,12 +11,12 @@
 </form>
 <br>
 <table style="width:100%;text-align:center">
-    <tr><th>Id</th>
+    <tr><th>Nr</th>
         <th>Ievaditie dati</th>
     </tr>
     <tr th:each="data : ${ievades}">
-        <td th:text="${data.id}"></td>
-        <td th:text="${data.ievaditie_dati}"></td>
+        <td th:text="${data.nr}"></td>
+        <td th:text="${data.ievitie_dati}"></td>
     </tr>
 </table>
 </body>

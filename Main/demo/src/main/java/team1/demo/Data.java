@@ -4,12 +4,12 @@ public class Data {
     private long Nr;
     private String ievaditie_dati;
 
-    public long getId() {
+    public long getNr() {
         return Nr;
     }
 
-    public void setId(long id) {
-        this.Nr = id;
+    public void setNr(long nr) {
+        this.Nr = nr;
     }
 
     public String getIevaditie_dati() {
@@ -22,9 +22,9 @@ public class Data {
 
     @Override
     public String toString() {
-        return "Data{" +
+        return "Dati{" +
                 "Nr=" + Nr +
-                ", Dati='" + ievaditie_dati + '\'' +
+                ", ievaditie_dati='" + ievaditie_dati + '\'' +
                 '}';
     }
 

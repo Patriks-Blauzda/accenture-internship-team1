@@ -14,19 +14,19 @@ public class DataDao {
     private JdbcTemplate jdbcTemplate;
 
     public void save(Data data) {
-        String sql = "INSERT INTO DATA(ievaditie_dati) VALUES(?)";
+        String sql = "INSERT INTO DATI(ievaditie_dati) VALUES(?)";
         jdbcTemplate.update(sql, data.getIevaditie_dati());
     }
 
     public List<Data> loadAll() {
-        return jdbcTemplate.query("SELECT * FROM Dati", (resultSet, i) -> {
+        return jdbcTemplate.query("SELECT * FROM DATI", (resultSet, i) -> {
             return toData(resultSet);
         });
     }
 
     private Data toData(ResultSet resultSet) throws SQLException {
         Data data = new Data();
-        data.setId(resultSet.getLong("Nr"));
+        data.setNr(resultSet.getLong("NR"));
         data.setIevaditie_dati(resultSet.getString("IEVADITIE_DATI"));
         return data;
     }
