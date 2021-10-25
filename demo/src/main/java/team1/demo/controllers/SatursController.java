@@ -25,20 +25,19 @@ public class SatursController {
     public String insertData(Model model){
         Saturs saturs = new Saturs();
         model.addAttribute("insertData",saturs);
-        satursService.saveSaturs(saturs);
         System.out.println("Dodās uz galvenolapu....");
         return "index";
     }
-    @GetMapping("saturs")
+    @GetMapping("/saturs")
     public String listSaturs(Model model){
         model.addAttribute("saturs",satursService.findAll());
         System.out.println("Dodās uz datubāzi....");
         return "saturs";
     }
-    @PostMapping("/index")
+    @PostMapping("/")
     public String saveSaturs(@ModelAttribute("saturs") Saturs saturs){
        satursService.saveSaturs(saturs);
-       return "/index";
+       return "redirect:/saturs";
     }
 
 
