@@ -39,27 +39,4 @@ public class SatursController {
        satursService.saveSaturs(saturs);
        return "redirect:/saturs";
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //@GetMapping ("/dati")
-    //public String datubaze(){
-        //Saturs saturs = new Saturs();
-        //saturs.setNr(1L);
-                //satursService.save(saturs);
-        //List<Saturs>sararakst = satursService.findAll();
-        //System.out.println("Dodās uz datubāzi...");
-        //return "dati";
-    //}
-
 }
